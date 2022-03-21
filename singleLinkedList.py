@@ -24,16 +24,28 @@ class nodesList:
         while(current_node!=None):
             node_list.append(current_node.value)
             current_node=current_node.next_node 
-        print(f"{node_list} Cantidad de nodos {self.lenght}")  
+        print(f"{node_list} Cantidad de nodos -> {self.lenght}")  
         
+    def show_nodes_list_v2(self):
+        node_list=[]
+        current_node=self.head
+        while(current_node!=None):
+            node_list.append(current_node.value)
+            current_node=current_node.next_node 
+        #print(f"{node_list} Cantidad de nodos -> {self.lenght}")
+        return node_list
+    
+    
+    
     #añadir nodo al inicio de la lista    
     def prepend_node(self,value):
         new_node=self.node(value)
         if self.head==None and self.tail==None:
             self.head=new_node
             self.tail=new_node
+            
         else:
-            self.head.next_node=self.head
+            new_node.next_node=self.head
             self.head=new_node
         self.lenght+=1
             
@@ -105,7 +117,8 @@ class nodesList:
             current_node.value=value
         else:
             return None
-        
+         
+     
     #agregar un elemento en cualquier lugar de la linkedList
     def insert(self,index,value):
         #añadir el nodo al principio de la lista -> prepend
@@ -156,19 +169,12 @@ class nodesList:
         return self.head
             
     #vaciar la lista 
-    def delete_list(self):
-        node_list=[]
-        current_node=self.head
-        while(current_node!=None):
-            node_list.append(current_node.value)
-            current_node=current_node.next_node
-        contador=self.lenght
-        while(contador!=0):
+    def delete_list(self,node_list):
+        for i in range(len(node_list)):
             node_list.pop()
-            contador-=1
-        print(node_list)
-        
-        
+        #print(node_list)
+     
+    
     #convertir linea de texto a nodo
     '''def converter_text_in_node(self):
         with io.open("Challenge1.txt", 'r+',encoding='utf-8') as data_file:
@@ -188,66 +194,7 @@ class nodesList:
         print(self.list_nodes)
         data_file.close()'''
             
-    def menu_single_linked_list(self):
-        print("<< Elija la opción con la que desea continuar: \n     1. Insertar un nuevo nodo\n     2. Eliminar un nodo\n     3. Consultar por el valor de un nodo especificado\n     4. Editar el valor de un nodo existente en la lista\n     5. Invertir el contenido de la lista\n     6. Vaciar la lista\n     7. Salir del sistema\n")
-        while True:
-            try:
-                Option=int(input("     >>>>> "))
-                if Option==1:
-                    print("<< Elija donde desea insertar el nodo: \n     1. Al inicio de la lista\n     2. Al final de la litsa\n     3. En una posición específica de la lista\n")
-                    while True:
-                        try:
-                            option_insert=int(input("     >>>>> "))
-                            if option_insert==1:
-                                value_node=input("<< Ingrese el valor del nodo\n     >>>>> ")
-                                self.prepend_node(value_node)
-                            elif option_insert==2:
-                                value_node=input("<< Ingrese el valor del nodo\n     >>>>> ")
-                                self.append_node(value_node)
-                            elif option_insert==3:
-                                value_node=input("<< Ingrese el valor del nodo\n     >>>>> ")
-                                index_node=int(input("<< Ingrese la posición del nuevo valor del nodo"))
-                                self.insert(index_node,value_node)
-                            else:
-                                print("<< Opción inválida >>")
-                            break
-                        except ValueError:
-                            print(" <<<<< ¡Se esperaba un valor numérico! >>>>>") 
-                elif Option==2:
-                    print("<< Elija donde desea eliminar el nodo: \n     1. Al inicio de la lista\n     2. Al final de la litsa\n     3. En una posición específica de la lista\n")
-                    while True:
-                        try:
-                            option_delete=int(input("     >>>>> "))
-                            if option_delete==1:
-                                self.shift_node()
-                            elif option_delete==2:
-                                self.pop_node()
-                            elif option_delete==3:
-                                index_node=int(input("<< Ingrese la posición del nodo a eliminar"))
-                                self.remove(index_node)
-                            else:
-                                print("<< Opción inválida >>")
-                            break
-                        except ValueError:
-                             print(" <<<<< ¡Se esperaba un valor numérico! >>>>>")    
-                elif Option==3:
-                    consult_node=int(input("<< Ingrese la posicion del valor del nodo a consultar \n     >>>>> "))
-                    self.get(consult_node)
-                elif Option==4:
-                    value_node=input("<< Ingrese el valor del nodo a editar \n     >>>>> ")
-                    index_node=int(input("<< Ingrese la posicón del nodo a editar\n     >>>>> "))
-                    self.update_node(index_node,value_node)
-                elif Option==5:
-                    self.reverse()
-                elif Option==6:
-                    self.delete_list()
-                elif Option==7:
-                    print("                 Un gusto en servirle                 ")
-                else:
-                    print("<< Opción inválida >>")
-                break
-            except ValueError:
-                print(" <<<<< ¡Se esperaba un valor numérico! >>>>>") 
+    
         
             
         
