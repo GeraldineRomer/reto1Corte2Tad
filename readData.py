@@ -74,6 +74,7 @@ class read:
     def delete(self,archivo):
         with io.open(archivo,'a',encoding='utf-8') as data_file:
             data_file.truncate(0)
+    
         
     #primer menu
     def menu_read_data(self):
@@ -188,11 +189,11 @@ class read:
                         #aux_list=self.list_nodes.show_nodes_list_v2()
                         #self.replace_file(self.archivo,aux_list)
                     elif Option==6:
-                        aux_list=self.list_nodes.show_nodes_list_v2()
-                        self.list_nodes.delete_list(aux_list)
+                        #aux_list=self.list_nodes.show_nodes_list_v2()
+                        self.list_nodes.delete_list_v2()
                         #self.delete(self.archivo)
-                        #self.replace_file_v2(self.archivo)
-                        self.replace_file(self.archivo,aux_list)
+                        self.replace_file_v2(self.archivo)
+                        #self.replace_file(self.archivo,aux_list)
                     elif Option==7:
                         print("*********** Un gusto en servirle ***********")
                     else:

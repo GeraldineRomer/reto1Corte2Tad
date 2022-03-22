@@ -174,4 +174,6 @@ class nodesList:
             node_list.pop()
         #print(node_list)
      
- 
+    def delete_list_v2(self):
+        self.head=None
+        self.tail=None
