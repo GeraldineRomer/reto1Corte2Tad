@@ -48,7 +48,7 @@ class read:
         current_node=self.list_nodes.head
         with io.open(archivo,'w',encoding='utf-8') as data_file:
             while current_node!=None:
-                data_file.write('\n'+current_node.value.strip())
+                data_file.write(current_node.value.strip()+'\n')
                 current_node=current_node.next_node
         data_file.close() 
         
