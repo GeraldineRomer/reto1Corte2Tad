@@ -102,7 +102,7 @@ class nodesList:
              
             current_node=self.head
             contador=0
-            while(contador!=0):
+            while(contador!=index):
                 current_node=current_node.next_node
                 contador+=1
             print(current_node.value)
@@ -127,7 +127,7 @@ class nodesList:
         #añadir el nodo al final de la lista -> append
         elif index==self.lenght+1:
             return self.append_node(value)
-        elif not(index<0 or index>=self.lenght+1):
+        elif not(index<=0 or index>=self.lenght+1):
             new_node=self.node(value)
             pre_node=self.get(index-2)
             sig_node=pre_node.next_node
@@ -145,7 +145,7 @@ class nodesList:
         #eliminar el ultimo nodo de la lista -> pop
         elif index==self.lenght:
             return self.pop_node()
-        elif not(index<0 or index>=self.lenght):
+        elif not(index<=0 or index>self.lenght):
             pre_node=self.get(index-2)
             current_node=pre_node.next_node
             pre_node.next_node=current_node.next_node
@@ -174,30 +174,4 @@ class nodesList:
             node_list.pop()
         #print(node_list)
      
-    
-    #convertir linea de texto a nodo
-    '''def converter_text_in_node(self):
-        with io.open("Challenge1.txt", 'r+',encoding='utf-8') as data_file:
-            lines = [line.split(sep='\n',maxsplit=0) for line in data_file]
-        for line in lines:
-            new_node=self.node(line)
-            self.list_nodes.append(new_node.value)
-        print(self.list_nodes)
-        data_file.close()'''
-        
-    '''def converter_text_in_node(self):
-        print("\n Lista con cada dato de archivo en nodo")
-        with io.open('Challenge1.txt','r+',encoding='utf-8') as data_file:
-            for line in data_file.readlines():
-                new_node=self.node(line)
-                self.list_nodes.append(new_node.value)
-        print(self.list_nodes)
-        data_file.close()'''
-            
-    
-        
-            
-        
-            
-        
-    
+ 
